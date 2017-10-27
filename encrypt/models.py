@@ -9,4 +9,4 @@ class User_conf(models.Model):
 
 class Hash(models.Model):
     user = models.ForeignKey(User_conf)
-    data = models.TextField()
+    data = models.CharField(max_length=255)
