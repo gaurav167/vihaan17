@@ -10,9 +10,13 @@ from . import forms
 
 
 def data_encrypt(request):
-    form = forms.DataSaveForm(request.POST)
+    form = forms.DataSaveForm()
 
-    if form.is_valid():
-        hash_data = form.save()
-        encryption_suite = AES.new("7498211973984119", AES.MODE_CBC, Random.new().read(AES.block_size))
-        cipher_text = encryption_suite.encrypt(hash_data.data)
+    if request.method=="POST":
+        form = forms.DataSaveForm(request.POST)
+
+        if form.is_valid():
+            hash_data = form.save()
+            encryption_suite = AES.new("7498211973984119", AES.MODE_CBC, Random.new().read(AES.block_size))
+            cipher_text = encryption_suite.encrypt(hash_data.data)
+    return render('encrypt/data_form.html', {'form':form})
