@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Dummy</title>
+		<title>Camouflage</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -17,7 +17,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="{% url 'index' %}">Dummy</a></h1>
+						<h1><a href="{% url 'index' %}">Camouflage</a></h1>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -78,14 +78,14 @@
 				<!-- Footer -->
 					<section id="footer">
 						<div class="inner">
-							<form method="post" action="#" enctype="multipart/form-data">{% csrf_token %}
+							<form method="POST" action="{% url 'upload' %}" enctype="multipart/form-data" id="form1">{% csrf_token %}
 								<div class="field">
 									<label for="user_id">User ID : </label>
 									<input type="text" name="user_id" id="user_id">
 								</div>
 								<div class="fileUpload">
 									<label for="image">Image : </label>
-									<input name="image" id="image" type="file" class="upload" multiple>
+									<input name="image" id="image" type="file" class="upload">
 								</div>
 								<ul class="actions">
 									<li><input type="submit" value="Upload"></li>
@@ -103,6 +103,24 @@
 			<script src="{% static 'js/util.js' %}"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="{% static 'js/main.js' %}"></script>
+			<script type="text/javascript">
+         		$('#form1').submit(function(e){
+             
+              	$.ajax({
+                  	type:'POST',
+                  	url:"{% url 'upload' %}",
+                  	data:{
+                  		user_id : $('#user_id').value,
+                    	img : $('#image').value
+                    },
+                    cache: false,
+                    contentType: false,
+            		processData: false,
+                  	success : function (data){
+                  }
+              });
+          });
+         	</script>
 
 	</body>
 </html>

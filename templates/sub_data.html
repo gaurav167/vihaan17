@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Dummy</title>
+		<title>Camouflage</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -17,7 +17,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="{% url 'index' %}">Dummy</a></h1>
+						<h1><a href="{% url 'index' %}">Camouflage</a></h1>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -53,7 +53,9 @@
 								<div class="inner">
 
 									<h3 class="major">how this happens!</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet odio neque nobis consequuntur consequatur a quae, impedit facere repellat voluptates, enim assumenda culpa pariatur, vero voluptas quis? Accusamus iusto, fugiat.</p>
+									<p>A user for free can upload media to our cloud service and his data storage needs are taken care off by a healthy and state-of-the art cloud. For entities such as banks, governments, lawyers and others who wish to securely store their data such as banking transactions, sensitive citizen data and property data, can use our web application to securely store there data as well.</p><p>
+
+At the local instance of the user we encrypt there data and transfer it to our centralized server over secured links. The central server hashes the encrypted data to ascertain and assure the users data integrity.It then divides the data into a number of packets and encodes these packets into the media that is already stored in the cloud in abundance. Every packet is stored in more than one images to ensure accessibility and availability of data. Our least significant bit encoding methodology added to our intelligent blob detection and image processing algorithms encodes data into the images with negligible change in visual perception and appearance of the image.</p>
 
 									<!-- <section class="features">
 										<article>
@@ -78,7 +80,7 @@
 				<!-- Footer -->
 					<section id="footer">
 						<div class="inner">
-							<form method="post" action="#" enctype="multipart/form-data">{% csrf_token %}
+							<form method="post" action="{% url 'sub_data' %}" enctype="multipart/form-data" id="form1">{% csrf_token %}
 								<div class="field">
 									<label for="user_id">User ID : </label>
 									<input type="text" name="user_id" id="user_id">
@@ -103,6 +105,21 @@
 			<script src="{% static 'js/util.js' %}"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="{% static 'js/main.js' %}"></script>
+			<script type="text/javascript">
+         		$('#form1').submit(function(e){
+             
+              	$.ajax({
+                  	type:'POST',
+                  	url:"{% url 'sub_data' %}",
+                  	data:{
+                  		user_id : $('#user_id').value,
+                    	text : $('#data').value
+                    },
+                  	success : function (data){
+                  }
+              });
+          });
+         	</script>
 
 	</body>
 </html>

@@ -42,24 +42,11 @@
 			<section id="wrapper">
 				<header>
 				<div class="inner">
-						<h2>Mind your own Data</h2>
-						<p>Secure behind the bars</p>
+						<h2>FAILED!</h2>
+						<p>Your action has failed!</p>
 				</div>
 			</header>
 		</section>
-		<section id="footer">
-								<div class="inner">
-									<form method="post" action="#" enctype="multipart/form-data">{% csrf_token %}
-										<div class="field">
-											<label for="user_id">User ID : </label>
-											<input type="text" name="user_id" id="user_id">
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="View"></li>
-										</ul>
-									</form>
-								</div>
-							</section>
 	</div>
 
 		<!-- Scripts -->
@@ -69,5 +56,6 @@
 			<script src="{% static 'js/util.js' %}"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="{% static 'js/main.js' %}"></script>
+
 	</body>
 </html>
