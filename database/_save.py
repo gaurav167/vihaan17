@@ -2,7 +2,6 @@ from .models import User_media, Image
 from django.core.files import File
 
 class Save:
-	user_id = '0'
 	def input(self,u_id,data):
 		User_med = User_media(user_id=u_id)
 		User_med.save()

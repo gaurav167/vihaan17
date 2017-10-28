@@ -31,3 +31,6 @@ def elements(request):
 
 def signup(request):
 	return render(request, 'signup.html')
+
+def gallery(request):
+	return render(request,'gallery.html') 

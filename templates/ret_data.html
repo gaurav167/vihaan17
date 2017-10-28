@@ -49,7 +49,7 @@
 		</section>
 		<section id="footer">
 								<div class="inner">
-									<form method="post" action="#" enctype="multipart/form-data">{% csrf_token %}
+									<form method="post" action="{% url 'ret_data' %}" enctype="multipart/form-data" id="form1">{% csrf_token %}
 										<div class="field">
 											<label for="user_id">User ID : </label>
 											<input type="text" name="user_id" id="user_id">
@@ -69,5 +69,19 @@
 			<script src="{% static 'js/util.js' %}"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="{% static 'js/main.js' %}"></script>
+			<script type="text/javascript">
+         		$('#form1').submit(function(e){
+             
+              	$.ajax({
+                  	type:'POST',
+                  	url:"{% url 'ret_data' %}",
+                  	data:{
+                  		user_id : $('#user_id').value,
+                    },
+                  	success : function (data){
+                  }
+              });
+          });
+         	</script>
 	</body>
 </html>
